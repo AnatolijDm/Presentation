@@ -1,0 +1,208 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/monokai.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1>Electron</h1>
+					<img src="./images/icon.png">
+				</section>
+				<section>
+					<h2>What is Electron?</h2>
+					<ul>
+						<li>Electron is an open source project supported by GitHub and the community. </li>
+						<li>Electron is a library that you can use to write desktop applications using html / css / javascript.</li>
+						<li>These applications can be packaged under Windows / Mac / Linux and delivered via Windows / Mac-stores.</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Where Electron was used?</h2>
+					<ul>
+						<p>There are created a lot of programs based of Electron, such as: </p>
+						<li>A text editor Atom</li>
+						<li>Visual Studio Code</li>
+						<li> Mancy REPL console for Node.js</li>
+						<li>Meteor.js frameworks</li>
+						<li>the Slack chat client application</li>
+						<li>Skype</li>
+						<li>Discord</li>
+						<li>the WordPress desktop client</li>
+						<li>...</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Why desktop apps are useful to create?</h2>
+					<ul>
+						<li>Possibility to work with materials offline</li>
+						<li>Possibility to interact with the file system</li>
+						<li>Possibility to connect printers, USB devices</li>
+						<li>Using desktop applications is more familiar to users.</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Have the using Electron some limitations?</h2>
+					<ul>
+						<li>It will not build when used an older operating systems (less than Win7 / MacOS 10.9 / Ubuntu 12.04).</li>
+						<li>You should not write browsers and programs that use a lot of native things</li>
+						<li>If the disk space is limited</li>
+					</ul>
+				</section>
+				<section>
+					<h2>What does Electron consist of?</h2>
+					<ul>
+						<li>Electron integrates Chromium to work with UI</li>
+						<li>Node.js for working with the file system and network</li>
+						<li>A set of native modules for working with the operating system</li>
+					</ul>
+				</section>
+				<section>
+					<section>
+					<h2>Electron consists of two types of processes</h2>
+					<ul>
+						<li>Main</li>
+						<li>Renderer</li>
+					</ul>
+					<p>These processes run in parallel.<br>
+							The memory and process resources are isolated from each other.</p>
+				</section>
+				<section>
+						Main is a Node-like process. 
+						It is responsible for the application life cycle (opening and closing it)
+						for integration with the OS, and responsible for creating Renderer processes.
+				</section>
+				<section>
+						Renderer process - it is the browser window in your application (your UI)<br>
+						There can be several of these processes - and they are completely independent
+				</section>
+			</section>
+				<section>
+					<img src="./images/Processes.png">
+				</section>
+				<section>
+					The Electron application processes' behavior are like browser<br>
+					First, the browser starts and then the tab opens.<br>
+					Each tab is like one Renderer process in Electron.<br>
+					But if you close all the tabs, then your chrome remains running and you can still open or close the tabs or completely close the browser
+				</section>
+				<section>
+					Since the processes are completely isolated from each other and are responsible for various tasks, for interaction they use IPC.<br>
+					IPC is an inter process communication module that is needed for communication between processes:<br>
+					IPC is an instance of the Event Emmiter class. It provides several methods so you can send and subscribe to messages from Renderer / Main processes.
+				</section>
+				<section>
+					<h2>So, let's create the first program using Electron!</h2>
+				</section>
+				<section>
+					First, type: "npm init -y" in terminal to create dependencies<br>
+					Then, type: "npm install electron --save-dev" to install Electron app<br>
+				</section>
+				<section>
+					Let's create index.js file and type the code to create program window. (it wll do the main process)
+					<img src="./images/js.png">
+				</section>
+				<section>
+					We have already connect the html file with index.js, so now we need to create html file.
+					<img src="./images/html.png">
+				</section>
+				<section>
+					In package.json name command for running program
+					<img src="./images/json.png">
+				</section>				
+				<section>
+					So, now we can start the first program created by Electron<br>
+					Just type in terminal command: "npm run start"
+					<img src="./images/electron1.png">
+				</section>
+				<section>
+					We can create css file and make connection with html file the same way as in all web projects.
+					<img src="./images/electron+css.png">
+				</section>
+				<section>
+					The Electron is based by Chrome and we can see it then we open DevTools in our program. We can do it by code in index.js file.
+					<img src="./images/js+dev.png">
+				</section>
+				<section>
+					<img src="./images/electron+css+devTools.png">
+				</section>
+				<section>
+					We can create the other js file (it will do the renderer process) and connect it with html by typing in script tag: "require('./other-script.js')"<br>
+					These js files we can create a lot. We using this other js file the same way as in all web projects.
+				</section>
+				<section>
+					Finally, we created the simple electron program.<br>
+					As you can see it is only the basic method.<br>
+					For more deep study of Electron you can browse Electron courses.
+				</section>
+				<section>
+					<ul>
+						The positive side of Electron:
+						<li>Work with the Web: HTML, CSS, JS - Web as UI</li>
+						<li>Chrome only. Chrome Devtools *</li>
+						<li>Development speed</li>
+						<li>Latest browser features</li>
+						<li>Is free!</li>
+						<li>Does not require knowledge of C ++, Swift</li>
+					</ul>
+				</section>
+				<section>
+					<ul>
+						The negative side of Electron:
+						<li>Node + Chrome require. Project Weight (100mb)</li>
+						<li>Even a simple Hello World will weigh a lot</li>
+						<li>Rendering processes create threads (eat all the memory)</li>
+						<li>Autoupdater for Linux platform</li>
+					</ul>
+				</section>
+				<section>
+					<ul>
+						The conclusion:
+						<li>You don't need to know C++ language to create Desktop apps</li>
+						<li>If you can create sites, you can create a native desktop application, using Electron.</li>
+						<li>Electron is ideal for creating MVP</li>
+					</ul>
+				</section>
+				<section>
+					<h1>Thank you for attention!</h1>
+				</section>
+			</div>
+		</div>
+
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true }
+				]
+			});
+		</script>
+	</body>
+</html>
